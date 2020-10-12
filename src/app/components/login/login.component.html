@@ -1,44 +1,102 @@
 <div class="limiter">
   <div class="container-login100">
     <div class="wrap-login100 p-t-50 p-b-90">
-      <form class="login100-form validate-form flex-sb flex-w">
+      <div class="login100-form validate-form flex-sb flex-w">
 					<span class="login100-form-title p-b-51">
-						Login
+						{{!openRegister ? 'Sign in' : 'Register'}}
 					</span>
 
-        <div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-          <input class="input100" type="text" name="username" placeholder="Username">
-          <span class="focus-input100"></span>
-        </div>
-
-
-        <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-          <input class="input100" type="password" name="pass" placeholder="Password">
-          <span class="focus-input100"></span>
-        </div>
-
-        <div class="flex-sb-m w-full p-t-3 p-b-24">
-          <div class="contact100-form-checkbox">
-            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-            <label class="label-checkbox100" for="ckb1">
-              Remember me
-            </label>
+        <form *ngIf="!openRegister" [formGroup]="loginForm" (ngSubmit)="login()" class="w-full">
+          <div class="wrap-input100 validate-input m-b-9" data-validate="Username is required">
+            <input class="input100" type="text" name="username" formControlName="firstname" placeholder="Username">
+            <span class="focus-input100"></span>
+          </div>
+          <div class="m-b-9 error-message" *ngIf="loginForm.controls?.firstname.invalid && showLoginErrors">
+            Required field!
           </div>
 
-          <div>
-            <a href="#" class="txt1">
-              Forgot?
-            </a>
+
+          <div class="wrap-input100 validate-input m-b-9" data-validate="Password is required">
+            <input class="input100" type="password" name="pass" formControlName="password" placeholder="Password">
+            <span class="focus-input100"></span>
           </div>
-        </div>
+          <div class="m-b-9 error-message" *ngIf="loginForm.controls?.password.invalid && showLoginErrors">
+            Required field!
+          </div>
 
-        <div class="container-login100-form-btn m-t-17">
-          <button class="login100-form-btn">
-            Login
-          </button>
-        </div>
 
-      </form>
+          <div class="flex-sb-m w-full p-t-3 p-b-24">
+            <div>
+              <div class="txt2 dis-inline-block m-r-10">
+                Not registered?
+              </div>
+              <button (click)="openRegister = true" class="txt1 dis-inline-block">
+                Create an account
+              </button>
+            </div>
+          </div>
+
+          <div class="container-login100-form-btn m-t-17">
+            <button type="submit" class="login100-form-btn">
+              {{!openRegister ? 'Sign in' : 'Register'}}
+            </button>
+          </div>
+        </form>
+
+        <form *ngIf="openRegister" [formGroup]="registerForm" (ngSubmit)="register()" class="w-full">
+          <div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
+            <input class="input100" type="text" name="username" formControlName="firstname" placeholder="Username">
+            <span class="focus-input100"></span>
+          </div>
+          <div class="m-b-9 error-message" *ngIf="registerForm.controls?.firstname.invalid && showLoginErrors">
+            Required field!
+          </div>
+
+          <div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
+            <input class="input100" type="text" name="username" formControlName="lastname" placeholder="Username">
+            <span class="focus-input100"></span>
+          </div>
+          <div class="m-b-9 error-message" *ngIf="registerForm.controls?.lastname.invalid && showLoginErrors">
+            Required field!
+          </div>
+
+
+          <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+            <input class="input100" type="password" name="pass" formControlName="password" placeholder="Password">
+            <span class="focus-input100"></span>
+          </div>
+          <div class="m-b-9 error-message" *ngIf="registerForm.controls?.password.invalid && showLoginErrors">
+            Required field!
+          </div>
+
+          <div class="flex-sb-m w-full p-t-3 p-b-24">
+            <div>
+              <button (click)="openRegister = false" class="txt1 dis-inline-block">
+                Sign in
+              </button>
+            </div>
+          </div>
+
+          <div class="container-login100-form-btn m-t-17">
+            <button type="submit" class="login100-form-btn">
+              {{!openRegister ? 'Sign in' : 'Register'}}
+            </button>
+          </div>
+        </form>
+
+      </div>
     </div>
   </div>
+</div>
+
+<!-- The Modal -->
+<div [class]="modalClass">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>{{modalText}}</h2>
+    </div>
+  </div>
+
 </div>

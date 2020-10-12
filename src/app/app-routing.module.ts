@@ -6,13 +6,13 @@ import {LoginComponent} from './components/login/login.component';
 
 const routes: Routes = [
   {
-    path: '', pathMatch: 'full', component: HomeComponent, canActivate: [AuthGuard]
+    path: '',  component: HomeComponent, canActivate: [AuthGuard]
   },
   {
     path: 'login', pathMatch: 'full', component: LoginComponent
   },
   {
-    path: '**', pathMatch: 'full', redirectTo: '',
+    path: '**',  redirectTo: '',
   }
 ];
 

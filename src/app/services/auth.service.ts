@@ -28,13 +28,17 @@ export class AuthService {
   }
 
   login(data: any) {
-    return this.http.post(`${environment.apiUrl}/auth/token`, data)
+    return this.http.post(`${environment.apiUrl}/user/login`, data)
       .pipe(
         map((res: any) => {
           localStorage.setItem('token', res.token);
           this.authenticationState.next(true);
         })
       );
+  }
+
+  register(data: any) {
+    return this.http.post(`${environment.apiUrl}/user`, data);
   }
 
   logout() {
