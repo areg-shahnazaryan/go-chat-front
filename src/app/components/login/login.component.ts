@@ -18,12 +18,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   modalClass = 'modal';
   subscription: Subscription = new Subscription();
   loginForm: FormGroup = new FormGroup({
-    firstname: new FormControl('', Validators.required),
+    firstName: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
   registerForm: FormGroup = new FormGroup({
-    firstname: new FormControl('', Validators.required),
-    lastname: new FormControl('', Validators.required),
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
   constructor(private authService: AuthService, private router: Router) {

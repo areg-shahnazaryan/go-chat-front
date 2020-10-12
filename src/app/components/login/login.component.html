@@ -8,10 +8,10 @@
 
         <form *ngIf="!openRegister" [formGroup]="loginForm" (ngSubmit)="login()" class="w-full">
           <div class="wrap-input100 validate-input m-b-9" data-validate="Username is required">
-            <input class="input100" type="text" name="username" formControlName="firstname" placeholder="Username">
+            <input class="input100" type="text" name="username" formControlName="firstName" placeholder="Username">
             <span class="focus-input100"></span>
           </div>
-          <div class="m-b-9 error-message" *ngIf="loginForm.controls?.firstname.invalid && showLoginErrors">
+          <div class="m-b-9 error-message" *ngIf="loginForm.controls?.firstName.invalid && showLoginErrors">
             Required field!
           </div>
 
@@ -45,18 +45,18 @@
 
         <form *ngIf="openRegister" [formGroup]="registerForm" (ngSubmit)="register()" class="w-full">
           <div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
-            <input class="input100" type="text" name="username" formControlName="firstname" placeholder="Username">
+            <input class="input100" type="text" name="username" formControlName="firstName" placeholder="Firstname">
             <span class="focus-input100"></span>
           </div>
-          <div class="m-b-9 error-message" *ngIf="registerForm.controls?.firstname.invalid && showLoginErrors">
+          <div class="m-b-9 error-message" *ngIf="registerForm.controls?.firstName.invalid && showLoginErrors">
             Required field!
           </div>
 
           <div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
-            <input class="input100" type="text" name="username" formControlName="lastname" placeholder="Username">
+            <input class="input100" type="text" name="username" formControlName="lastName" placeholder="Lastname">
             <span class="focus-input100"></span>
           </div>
-          <div class="m-b-9 error-message" *ngIf="registerForm.controls?.lastname.invalid && showLoginErrors">
+          <div class="m-b-9 error-message" *ngIf="registerForm.controls?.lastName.invalid && showLoginErrors">
             Required field!
           </div>
 
