@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
@@ -28,17 +28,18 @@ export class AuthService {
   }
 
   login(data: any) {
-    return this.http.post(`${environment.apiUrl}/user/login`, data)
+    return this.http.post(`${environment.apiUrl}/users/login`, data)
       .pipe(
         map((res: any) => {
           localStorage.setItem('token', res.token);
+          localStorage.setItem('userId', res.userId);
           this.authenticationState.next(true);
         })
       );
   }
 
   register(data: any) {
-    return this.http.post(`${environment.apiUrl}/user`, data);
+    return this.http.post(`${environment.apiUrl}/users`, data);
   }
 
   logout() {
@@ -49,5 +50,23 @@ export class AuthService {
 
   isAuthenticated() {
     return this.authenticationState.value;
+  }
+
+  getUserData() {
+    const userId = localStorage.getItem('userId');
+    return this.http.get(`${environment.apiUrl}/users/${userId}`, {headers: this.creatingHeader()});
+  }
+
+  sendMessage(userName: string, message: string) {
+    return this.http.post(`${environment.apiUrl}/users/login/messages`, {
+      userName,
+      message
+    }, {headers: this.creatingHeader()});
+  }
+
+  creatingHeader(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    const headers: HttpHeaders = new HttpHeaders();
+    return headers.append('Authorization', `Bearer ${token}`);
   }
 }

@@ -7,6 +7,16 @@
 }
 
 @font-face {
+  font-family: Ubuntu-Light;
+  src: url('../fonts/ubuntu/Ubuntu-Light.ttf');
+}
+
+@font-face {
+  font-family: Ubuntu-Medium;
+  src: url('../fonts/ubuntu/Ubuntu-Medium.ttf');
+}
+
+@font-face {
   font-family: Ubuntu-Bold;
   src: url('../fonts/ubuntu/Ubuntu-Bold.ttf');
 }
@@ -441,6 +451,130 @@ iframe {
   }
 }
 
+/*  TopBar */
 
+.topbar {
+  background: #e6e6e6;
+  height: 7vh;
+  position: relative;
+}
+
+.topbar button {
+  font-family: Ubuntu-Bold;
+  font-size: 16px;
+  color: #fff;
+  text-transform: uppercase;
+  display: flex;
+  padding: 0 20px;
+  height: 45px;
+  background-color: #827ffe;
+  border-radius: 3px;
+  transition: all 0.4s;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*  Chat container*/
+
+.messages {
+  margin: 20px 20px 0;
+  overflow-y: scroll;
+  position: relative;
+  height: 89%;
+}
+
+.message {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: max-content;
+  background: #373737;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-family: Ubuntu-Medium;
+  position: relative;
+}
+
+.message-info {
+  position: absolute;
+  color: black;
+  font-size: 13px;
+  left: 3%;
+  top: -34%;
+  width: max-content;
+}
+
+.chat-container {
+  background: #e6e6e6;
+  height: 75vh;
+  margin: 60px;
+  border: 1px solid #403866;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.user-info {
+  font-size: 20px;
+  font-family: Ubuntu-Light;
+  position: relative;
+  padding: 20px;
+  border-bottom: 1px solid black;
+}
+
+.chat-input {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.chat-input input {
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+  line-height: 30px;
+  font-size: 20px;
+  font-family: Ubuntu-Medium;
+}
+.chat-input button {
+  position: absolute;
+  right: 0;
+  padding: 17px;
+}
+
+.check-mark {
+  position: absolute;
+  right: -25px;
+  top: 29%;
+  font-size: 15px;
+  background: green;
+  height: 22px;
+  width: 22px;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+.failed {
+  background: red;
+}
+.pending {
+  background: #e6e6e6;
+}
 /*//////////////////////////////////////////////////////////////////
 [ Responsive ]*/
+
+.messages::-webkit-scrollbar {
+  width: 1em;
+}
+
+.messages::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}

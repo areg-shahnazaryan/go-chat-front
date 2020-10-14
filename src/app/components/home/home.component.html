@@ -1,1 +1,34 @@
-<button (click)="logout()">Log Out</button>
+<div class="topbar">
+  <button (click)="logout()">Log Out</button>
+</div>
+
+<div class="chat-container">
+  <div class="user-info">
+    {{userData.firstName }} {{userData.lastName}}
+  </div>
+  <div class="messages">
+    <div *ngFor="let message of messages">
+      <div class="message" >
+        {{message.message}}
+        <div class="message-info">
+          {{userData.firstName }} {{userData.lastName}}
+        </div>
+        <div class="check-mark" *ngIf="message.status === true">
+          &#10003;
+        </div>
+        <div class="check-mark failed" *ngIf="!message.status">
+          x
+        </div>
+        <div class="check-mark pending" *ngIf="message.status === 'pending'">
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="chat-input">
+    <input type="text" [(ngModel)]="messageVal" (keyup)="addInput($event)">
+    <button (click)="addInput('clicked')">
+      <img src="../../../assets/message-icon.svg" alt="">
+    </button>
+  </div>
+</div>
